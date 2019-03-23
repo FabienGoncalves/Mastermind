@@ -1,9 +1,12 @@
+import Game.GameManager;
 
 public class main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.print("Hello");
+
+		GameManager game = new GameManager();
+		game.Start();
+
 	}
 
 }

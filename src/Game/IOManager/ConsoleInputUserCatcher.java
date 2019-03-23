@@ -1,4 +1,4 @@
-package Game;
+package Game.IOManager;
 
 import java.util.Scanner;
 

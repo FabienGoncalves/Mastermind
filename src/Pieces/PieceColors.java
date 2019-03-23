@@ -3,11 +3,11 @@ package Pieces;
 public enum PieceColors {
 
 	RED('R'),
-	YELLOW('Y'),
+	YELLOW('J'),
 	BLUE('B'),
 	ORANGE('O'),
-	GREEN('G'),
-	BLACK('B');
+	GREEN('V'),
+	BLACK('N');
 	
 	private char color;
 
