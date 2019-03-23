@@ -7,7 +7,7 @@ import Pieces.Piece;
 
 public class PieceTest {
 
-	Piece p1, p2, p3, p4;
+	Piece p1, p2, p3, p4 = null;
 	
 	@Before
 	public void init() throws IncorrectPieceException {
