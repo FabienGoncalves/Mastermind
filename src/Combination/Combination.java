@@ -1,7 +1,6 @@
 package Combination;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import Exceptions.IncorrectCombinationException;
@@ -22,7 +21,7 @@ public class Combination {
 	// ATTRIBUTS
 	private Piece[] pieceArray; // tableau de pions
 
-	// Ctor : renvoie null si la création a échoué
+	// Ctor
 	// Construit une combinaison en générant les valeurs
 	public Combination() {
 		pieceArray = new Piece[4];

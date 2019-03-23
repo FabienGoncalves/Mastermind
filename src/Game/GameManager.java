@@ -4,42 +4,38 @@ import java.util.ArrayList;
 
 import Combination.Combination;
 import Combination.CombinationComparer;
-import Exceptions.IncorrectCombinationException;
 import Game.IOManager.ConsoleGameMessageSender;
 import Game.IOManager.ConsoleInputUserCatcher;
 
 /**
- * GameManager Classe de gestion d'un jeu du type tour par tour. Le jeu se
+ * GameManager Classe de gestion d'une partie de Mastermind. Le jeu se
  * termine forcément par une victoire ou un nombre de tours maximum 
  * 1) La méthode Start débute le jeu 
- * 2) La méthode NextTurn est appelée tant que nécessaire 
+ * 2) La méthode NextTurn est appelée à chaque nouveau tour jusqu'à la fin de la partie 
  * 3) La méthode IsWinner définit la condition de victoire
  * 4) La méthode GameOver est appelée à la fin de la partie
  */
 
 public class GameManager {
+	
 	// CONSTANTES
-	final int NB_TURN_MAX = 10; // Nombre de tours maximum d'une partie
+	final int NB_TURN_MAX = 10; 				// Nombre de tours maximum d'une partie
 
 	// ATTRIBUTS
-	private int iNbTurn = NB_TURN_MAX; // nombre de tours restants
-	private Combination combinationSolution; // solution de la partie en cours
+	private int iNbTurn = NB_TURN_MAX; 			// nombre de tours restants
+	private Combination combinationSolution; 	// solution de la partie en cours
 	private boolean IsWinner = false;			// indique si la partie est gagnée
-	private ArrayList<CombinationComparer> previousTurns = new ArrayList<CombinationComparer>();
+	private ArrayList<CombinationComparer> previousTurns = new ArrayList<CombinationComparer>(); // comparaisons des tours précédents
 
 	// METHODES
 
 	// Débute le jeu
 	public void Start() {
-		// repositionne les propriétés à leur valeur par défaut
-		Init();
-		// génère une combinaison pour la solution (le ctor sans paramètre génère une
-		// combinaison)
-		combinationSolution = new Combination();
-		// boucle de jeu
-		while (!IsWinner && iNbTurn != 0) { NextTurn(); }
-		// fin du jeu, on sort de la boucle
-		GameOver();
+		Init(); 											// repositionne les propriétés à leur valeur par défaut
+		ConsoleGameMessageSender.StartGameMsg(); 			// message de début de partie
+		while (!IsWinner && iNbTurn != 0) { NextTurn(); } 	// boucle de jeu
+		GameOver(); 										// fin du jeu
+
 	}
 
 	// Réinitialise les propriétés pour la nouvelle partie
@@ -47,6 +43,8 @@ public class GameManager {
 		iNbTurn = NB_TURN_MAX;
 		previousTurns.clear();
 		IsWinner = false;
+		// génère une combinaison pour la solution (le ctor sans paramètre génère une combinaison)
+		combinationSolution = new Combination(); 
 	}
 
 	// Joue un tour complet

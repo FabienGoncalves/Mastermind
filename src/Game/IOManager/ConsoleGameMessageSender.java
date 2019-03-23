@@ -1,7 +1,5 @@
 package Game.IOManager;
 
-import java.util.ArrayList;
-
 import Combination.CombinationComparer;
 
 /**
@@ -16,11 +14,12 @@ public class ConsoleGameMessageSender {
 
 
 	public static void StartGameMsg() {
-		System.out.println("Nouvelle partie : l'ordinateur a choisi sa combinaison.");
+		System.out.println("************** Nouvelle partie **************");
+		System.out.println("L'ordinateur a choisi sa combinaison.");
 	}
 	
 	public static void NewTurnMsg() {
-		System.out.println("Nouveau tour, entrez une combinaison de 4 couleurs : ");
+		System.out.println("Nouveau tour, entrez une combinaison de 4 couleurs (RJBOVN) : ");
 	}
 	
 	public static void ErrorCombination() {
@@ -34,7 +33,8 @@ public class ConsoleGameMessageSender {
 		for (int i = 0; i < arrayComparer.length; i++) {
 			System.out.println(String.format("|%s| %d | %d | %d/%d |", arrayComparer[i].getUserCombination(), arrayComparer[i].getNbGoodPieces(), arrayComparer[i].getNnbGoodColors(), i+1, nbTurnMax));
 		}
-		System.out.println(String.format("|....| . | . | %d/%d |", arrayComparer.length + 1, nbTurnMax));
+		if(arrayComparer.length + 1 <= nbTurnMax)
+			System.out.println(String.format("|....| . | . | %d/%d |", arrayComparer.length + 1, nbTurnMax));
 		System.out.println("|--------------------|");
 		
 	}
