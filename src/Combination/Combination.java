@@ -10,7 +10,7 @@ import Pieces.Piece;
  * 
  * @author Fabien
  *
- * Représente une combinaison de Mastermind
+ * Represente une combinaison de Mastermind
  *
  */
 public class Combination {
@@ -21,24 +21,29 @@ public class Combination {
 	// ATTRIBUTS
 	private Piece[] pieceArray; // tableau de pions
 
-	// Ctor
-	// Construit une combinaison en générant les valeurs
+	/**
+	 * Constructeur sans parametre, il genere une combinaison
+	 */
 	public Combination() {
 		pieceArray = new Piece[4];
 		for (int i = 0; i < pieceArray.length; i++) {
-			pieceArray[i] = new Piece(); // appelle le constructeur qui génère un pion
+			pieceArray[i] = new Piece();
 		}
 	}
 
-	// construit une combinaison à partir d'une entrée texte
+	/**
+	 * Constructeur de combinaison a partir d'une entree texte
+	 * @param sEntry Chaine de caracteres a convertir en combinaison
+	 * @throws IncorrectCombinationException : la chaine passee n'est pas une combinaison acceptable
+	 */
 	public Combination(String sEntry) throws IncorrectCombinationException {
-		// Vérifie la longeur de la chaine et formate le texte en un tableau de pions
+		// Verifie la longeur de la chaine et formate le texte en un tableau de pions
 		if (sEntry.length() == NB_PIECES_IN_COMBINAISON) {
 			char[] arrayColors = sEntry.toUpperCase(Locale.ROOT).toCharArray();
 			pieceArray = new Piece[4];
 			for (int i = 0; i < pieceArray.length; i++) {
 				try {
-					pieceArray[i] = new Piece(arrayColors[i]); // appelle le constructeur qui génère un pion
+					pieceArray[i] = new Piece(arrayColors[i]);
 				} catch (Exception e) {
 					throw new IncorrectCombinationException();
 				}
@@ -49,11 +54,20 @@ public class Combination {
 	}
 
 	// ACCESSEURS
+	/**
+	 * Acesseur tableau de pions
+	 * @return le tableau de pions de la combinaison
+	 */
 	public Piece[] getPieceArray() {
 		return pieceArray;
 	}
 
 	// METHODES
+	/**
+	 * Compare la combinaison actuelle avec celle passee en parametre
+	 * @param combination = La combinaison entree par le joueur
+	 * @return un objet contenant le rÃ©sultat de la comparaison
+	 */
 	public CombinationComparer CompareWith(Combination combination) {
 		int iNbGoodPieces = 0;
 		int iNbGoodColors = 0;
@@ -63,20 +77,20 @@ public class Combination {
 		ArrayList<Piece> lstPieceLeftProposition = new ArrayList<Piece>();
 		ArrayList<Piece> lstPieceLeftSolution = new ArrayList<Piece>();
 
-		// on trouve les pions bien placés
+		// on trouve les pions bien places
 		for (int i = 0; i < pieceArraySolution.length; i++) {
 			if(pieceArrayProposition[i].equals(pieceArraySolution[i])) {
-				// la pièce est bien placée
+				// la piece est bien placee
 				iNbGoodPieces++;
 			}
 			else {
-				// la pièce est mal placée, on sauve pour analyse des pions mal placés
+				// la piece est mal placee, on sauve pour analyse des pions mal places
 				lstPieceLeftSolution.add(pieceArraySolution[i]);
 				lstPieceLeftProposition.add(pieceArrayProposition[i]);
 			}
 		}
 		
-		// on trouve les pions mal placées
+		// on trouve les pions mal placees
 		if(!lstPieceLeftProposition.isEmpty()) {
 			for (Piece piece : lstPieceLeftProposition) {
 				if(lstPieceLeftSolution.contains(piece)) {
@@ -89,7 +103,10 @@ public class Combination {
 		return new CombinationComparer(combination.ToString(), iNbGoodPieces, iNbGoodColors, iNbGoodPieces == NB_PIECES_IN_COMBINAISON ? true : false);
 	}
 	
-	
+	/**
+	 * Transforme la combinaison en chaine pour l'affichage
+	 * @return une chaine representant la combinaison
+	 */
 	public String ToString() {
 		String sCombination = "";
 		for (Piece piece : pieceArray) {

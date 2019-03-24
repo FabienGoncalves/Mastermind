@@ -4,7 +4,7 @@ package Combination;
  * 
  * @author Fabien
  *
- *	Classe contenant des éléments de comparaison des combinaisons de mastermind
+ *	Classe contenant le rÃ©sultat d'un tour de jeu de mastermind
  */
 
 public class CombinationComparer {
@@ -15,7 +15,13 @@ public class CombinationComparer {
 	private int iNbGoodColors = 0;
 	private boolean AreCombinationEquals = false;
 	
-	// Ctor
+	/**
+	 * Constructeur de l'objet
+	 * @param _sUserCombination Combinaison entree
+	 * @param _iNbGoodPieces 	Nb de pions bien places
+	 * @param _iNbGoodColors	Nb de couleurs mal placees
+	 * @param _AreCombinationEquals	True si les combinaisons sont identiques
+	 */
 	public CombinationComparer(String _sUserCombination, int _iNbGoodPieces, int _iNbGoodColors, boolean _AreCombinationEquals) {
 		sUserCombination = _sUserCombination;
 		iNbGoodPieces = _iNbGoodPieces;

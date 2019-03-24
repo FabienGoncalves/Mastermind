@@ -6,7 +6,7 @@ import java.util.Scanner;
  * 
  * @author Fabien
  *
- *	Gère les input console
+ *	Gere les inputs console
  */
 public class ConsoleInputUserCatcher {
 

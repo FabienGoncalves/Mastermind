@@ -6,7 +6,7 @@ import Exceptions.IncorrectPieceException;
  * 
  * @author Fabien
  *
- * Représente un pion de la combinaison
+ * Represente un pion d'une combinaison
  *
  */
 
@@ -15,15 +15,19 @@ public class Piece {
 	// ATTRIBUT
 	private PieceColors color = null;
 	
-	
-	// Ctor
-	// Génère une pièce automatiquement
+	/**
+	 * Constructeur de pion, il genere un pion
+	 */
 	public Piece() {
 		int idx = (int) ((Math.random() * 100) % PieceColors.values().length);
 		color = PieceColors.values()[idx];
 	}
 	
-	// Créé la pièce à partir d'une valeur de couleur
+	/**
+	 * Constructeur de pion a partir d'une valeur de couleur
+	 * @param cValue Valeur de couleur
+	 * @throws IncorrectPieceException La couleur n'est pas correcte
+	 */
 	public Piece(char cValue) throws IncorrectPieceException {
 		for (PieceColors colorItem : PieceColors.values() ) {
 			if(cValue == colorItem.getColor()) {
@@ -37,6 +41,10 @@ public class Piece {
 	
 	
 	// METHODES
+	/**
+	 * Renvoi un caractere representant le pion par sa couleur
+	 * @return La couleur du pion (char)
+	 */
 	public char ToChar() {
 		return color.getColor();
 	}
